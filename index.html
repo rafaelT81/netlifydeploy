@@ -214,7 +214,8 @@
             </div>
 
             <!-- Carte 2: Bannière Article 2 (LIEN INSTAGRAM) -->
-            <a href="https://www.instagram.com/">
+            <!-- Mise à jour de l'URL pour pointer vers instagram.com. L'effet de survol est conservé via data-project-details="" -->
+            <a href="https://www.instagram.com/" target="_blank" class="portfolio-card bg-gray-700 hover:bg-gray-600" data-project-details="">
                 <img src="./banniere-article-2.png" alt="Bannière Article 2" class="w-full h-full object-cover">
                 <!-- Titres supprimés -->
             </a>
@@ -308,7 +309,8 @@
         // Initialisation des événements de clic pour les cartes
         document.querySelectorAll('.portfolio-card').forEach(card => {
             // La logique pour les cartes interactives reste la même, car elle utilise les attributs data-project-*
-            if (card.hasAttribute('data-project-details') || card.hasAttribute('data-project-gif')) { 
+            // On vérifie aussi si ce n'est pas un lien <a>, pour éviter d'intercepter les clics sur les liens externes (comme Article 2)
+            if ((card.hasAttribute('data-project-details') || card.hasAttribute('data-project-gif')) && card.tagName !== 'A') { 
                 card.addEventListener('click', () => {
                     // Puisque les titres sont supprimés, nous utilisons un titre générique pour la modale
                     const title = "Détails du Projet"; 
@@ -477,5 +479,4 @@
         }
     </script>
 </body>
-
 </html>
